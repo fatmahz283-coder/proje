@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link rel="stylesheet" href="a.css"/>
+<style>
+
+
+/*menu kodu */
+ul{
+	margin:0px;
+	padding:0px;
+	background-color:#000;
+	list-style-type:none;
+	width:100%;
+	height:70px;
+	margin-bottom:0px;
+	}
+li{
+	float:left;
+	}
+li a{
+	color:white;
+	text-align:center;
+	font-size:18px;
+	padding:22px 40px;
+	text-decoration:none;
+	display:block;
+	font-size:24px;
+	min-width:130px;
+	}
+li a:hover{
+	background-color:#999;
+	transition: 0.3s;     /* Üzerine gelince yumuşak efekt için */
+	}	
+	
+#resim{
+	margin-left:20px;
+	margin-right:20px;
+	margin-top:60px;}
+#resim:hover{
+	transform: scale(1.05);
+    transition: 0.3s ease;
+	box-shadow: 0px 10px 16px 0px rgba(0,0,0,0.8);
+}	
+#resim3{
+	margin-left:20px;
+	margin-right:20px;
+	margin-top:40px;
+	margin-bottom:90px;}	
+#resim3:hover{
+	transform: scale(1.05);
+    transition: 0.3s ease;
+	box-shadow: 0px 10px 16px 0px rgba(0,0,0,0.8);
+}		
+#resim1{
+	margin-left:20px;
+	margin-right:20px;
+	margin-top:40px;}
+#resim1:hover{
+	transform: scale(1.05);
+    transition: 0.3s ease;
+		box-shadow: 0px 10px 16px 0px rgba(0,0,0,0.7);
+}		
+#resim2{
+	margin-left:20px;
+	margin-right:20px;
+	margin-top:40px;
+	margin-bottom:90px;}
+#resim2:hover{
+	transform: scale(1.05);
+    transition: 0.3s ease;
+		box-shadow: 0px 10px 16px 0px rgba(0,0,0,0.7);
+}			
+		
+.slider-container {
+        position: relative;
+        width: 900px;
+        height:550px;
+        overflow: hidden;
+        border: 0px; 
+		margin-top:50px;
+}
+		.main-slider-wrapper {
+            display: flex; /* İçindeki her şeyi yan yana dizer */
+            align-items: center; 
+            justify-content: center; 
+            margin: 50px auto; 
+        }
+		.slide {
+            width: 100%;
+            height: 100%;
+            display: none; /* Varsayılan olarak gizli */
+            object-fit: cover;
+			
+        }
+        .slide.active {
+            display: block; /* Sadece aktif olan görünür */
+        }
+        .slider-btn {
+            background: rgba(0,0,0,0.2); /* Biraz daha belirgin siyah */
+            color: white;
+            border: none;
+            padding: 20px 20px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 18px;
+            border-radius:1px;
+            transition: background 0.3s;
+			}
+
+        .slider-btn:hover {
+            background: rgba(0,0,0,0.5);
+        }
+
+        #prevBtn { margin-left:20px; }
+        #nextBtn { margin-right:20px; }
+</style>
+
+</head>
+
+<body>
+
+<ul>
+<li><a href="anasayfa.html">Luvia Restaurant & Lounge</a></li>
+<li><a href="Rezervasyon.html">Rezervasyon</a></li>
+<li><a href="galeri.html">Galeri</a></li>
+<li><a href="hakkimizda.html">Hakkımızda</a></li>
+<li><a href="i.html">İletişim</a></li>
+</ul>
+
+
+<div>
+  <div class="main-slider-wrapper">
+ <button id="prevBtn" class="slider-btn">❮</button>
+    
+    <div class="slider-container">
+       <div class="slider">
+        <img src="resim/lila-galeri-1.jpg" class="slide" /> 
+        <img src="resim/lila-galeri-2.jpg" class="slide" /> 
+        <img src="resim/lila-galeri-4.jpg" class="slide" /> 
+        <img src="resim/lila-galeri-05.jpg" class="slide"/>
+        <img src="resim/lila-galeri-06.jpg" class="slide"/>
+        <img src="resim/lila-galeri-07.jpg" class="slide"/>
+        <img src="resim/lila-galeri-7.jpg" class="slide" />
+        <img src="resim/lila-galeri-8.jpg" class="slide" />
+        <img src="resim/lila-galeri-9.jpg" class="slide" />
+        <img src="resim/lila-galeri-10.jpg" class="slide"/>
+      </div>
+    </div>
+
+    <button id="nextBtn" class="slider-btn">❯</button>
+</div>
+
+<script>
+    var slides = document.querySelectorAll('.slide');
+    var nextBtn = document.querySelector('#nextBtn');
+    var prevBtn = document.querySelector('#prevBtn');
+    var currentIndex = 0;
+
+    // Başlangıçta ilk slaytı aktif et
+    if (slides.length > 0) {
+        slides[currentIndex].classList.add('active');
+    }
+    function showSlide(index) {
+        // Mevcut aktif sınıfını kaldır
+        slides[currentIndex].classList.remove('active');
+        // Döngü mantığı
+        if (index >= slides.length) {
+            currentIndex = 0;
+        } else if (index < 0) {
+            currentIndex = slides.length - 1;
+        } else {
+            currentIndex = index;
+        }
+        slides[currentIndex].classList.add('active');
+    }
+
+    nextBtn.addEventListener('click', function() {
+        showSlide(currentIndex + 1);
+    });
+
+    prevBtn.addEventListener('click', function() {
+        showSlide(currentIndex - 1);
+    });
+</script>
+</div>
+
+<div style="margin:100px; width:90%; height:1800px;">
+<img src="resim/MuseumHotel_3.jpg" width="620" height="430" id="resim" />
+<img src="resim/lila-anaslider.jpg" width="620" height="430" id="resim" />
+<img src="resim/Ekran görüntüsü 2026-01-29 133429.png" width="620" height="430" id="resim3"/>
+<img src="resim/ghnvb.png" width="620" height="430" id="resim3" /> 
+<img src="resim/Ekran görüntüsü 2026-01-29 133646.png" width="400" height="600" id="resim1"/>
+<img src="resim/Ekran görüntüsü 2026-01-29 133628.png" width="400" height="600" id="resim1" />
+<img src="resim/Ekran görüntüsü 2026-01-29 133801.png" width="400" height="600" id="resim1"/>
+<img src="resim/Ekran görüntüsü 2026-01-29 133701.png" width="400" height="600" id="resim1"/> 
+<img src="resim/Ekran görüntüsü 2026-01-29 133839.png" width="400" height="600" id="resim1"/> 
+<img src="resim/Ekran görüntüsü 2026-01-29 133954.png" width="400" height="600" id="resim1"/> 
+<img src="resim/Ekran görüntüsü 2026-01-29 133826.png" width="400" height="600" id="resim2"/>
+ <img src="resim/Ekran görüntüsü 2026-01-29 134017.png" width="400" height="600" id="resim2"/>
+<img src="resim/Ekran görüntüsü 2026-01-29 133727.png" width="400" height="600" id="resim2"/>
+</div>
+
+
+
+<div style="background-color:#000; width:99%; height:160px; position:absolute; margin-top:1230px;">
+<div style="margin-left:80px;">
+<img src="resim/jbufn.png" width="130px" height="120px" /> 
+</div>
+</div>
+<div style="background-color:#CCC; width:99%; height:20px; position:absolute; margin-top:1348px; margin-bottom:50px;">
+
+</div>
+</body>
+</html>
